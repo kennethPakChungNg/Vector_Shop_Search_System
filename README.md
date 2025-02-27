@@ -36,6 +36,7 @@ pip install -r requirements.txt
 
 # Install the package
 pip install -e .
+```
 
 ## 📖 Documentation
 
@@ -69,3 +70,4 @@ results = search.search(
 
 # Display results
 print(results[['product_name', 'price_usd', 'score']])
+```
