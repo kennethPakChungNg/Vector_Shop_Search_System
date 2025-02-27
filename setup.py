@@ -1,0 +1,35 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="vectorshop",
+    version="0.1.0",
+    description="Semantic product search system for e-commerce",
+    author="Kenneth Ng",
+    author_email="ngchungpak@gmail.com",
+    packages=find_packages(),
+    install_requires=[
+        "pandas>=1.3.0",
+        "numpy>=1.20.0",
+        "torch>=1.9.0",
+        "transformers>=4.18.0",
+        "faiss-cpu>=1.7.0",
+        "scikit-learn>=1.0.0",
+        "nltk>=3.6.0",
+        "tqdm>=4.62.0",
+        "pillow>=8.0.0",
+        "bitsandbytes>=0.35.0",
+        "sentence-transformers>=2.0.0",
+        "accelerate>=0.12.0",
+        "tenacity>=8.0.0",
+        "requests>=2.25.0",
+        "beautifulsoup4>=4.9.0",
+    ],
+    python_requires=">=3.9",
+    classifiers=[
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.9",
+    ],
+)
