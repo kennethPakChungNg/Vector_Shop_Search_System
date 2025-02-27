@@ -4,8 +4,6 @@ VectorShop uses a hybrid search approach that combines multiple search technolog
 
 ## System Overview
 
-![VectorShop Architecture](images/vectorshop_architecture.png)
-
 VectorShop is built on three complementary search technologies:
 
 1. **BM25 Search**: Traditional keyword-based retrieval for precise matching
