@@ -1,9 +1,5 @@
 # VectorShop: Semantic Product Search System
 
-<p align="center">
-  <img src="docs/images/vectorshop_logo.png" alt="VectorShop Logo" width="250"/>
-</p>
-
 VectorShop is a production-ready semantic search system for small-to-medium sized online stores, allowing customers to find products using natural language queries instead of just keywords.
 
 ## 🔍 Key Features
@@ -40,3 +36,36 @@ pip install -r requirements.txt
 
 # Install the package
 pip install -e .
+
+## 📖 Documentation
+
+- [System Architecture](docs/system_architecture.md)
+
+- [Data Preparation](docs/data_preparation.md)
+
+- [Performance Metrics](docs/performance_metrics.md)
+
+- [Integration Guide](docs/integration_guide.md)
+
+
+## 🧪 Example Usage
+
+```bash
+
+from vectorshop.embedding.hybrid_search import HybridSearch
+
+# Initialize search system
+search = HybridSearch(
+    df=product_data,
+    vector_index_path="path/to/vector_index.faiss",
+    device="cpu"
+)
+
+# Search for products
+results = search.search(
+    query="wireless earbuds with noise cancellation under 50 USD",
+    top_k=5
+)
+
+# Display results
+print(results[['product_name', 'price_usd', 'score']])
