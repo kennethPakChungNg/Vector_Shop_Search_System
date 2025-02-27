@@ -1,0 +1,4 @@
+# data/raw/.gitignore
+*.csv
+!amazon.csv
+!README.md

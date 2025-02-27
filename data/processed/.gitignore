@@ -1,0 +1,6 @@
+# data/processed/.gitignore
+*.csv
+*.npy
+*.faiss
+!amazon_with_improved_text.csv
+!README.md
