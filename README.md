@@ -40,11 +40,11 @@ pip install -e .
 
 ## 📖 Documentation
 
-- [System Architecture](docs/system_architecture.md)
+- [System Architecture](docs/architecture.md)
 
 - [Data Preparation](docs/data_preparation.md)
 
-- [Performance Metrics](docs/performance_metrics.md)
+- [Performance Metrics](docs/performance.md)
 
 - [Integration Guide](docs/integration_guide.md)
 
