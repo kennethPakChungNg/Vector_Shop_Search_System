@@ -55,6 +55,8 @@ def demo_search_for_stakeholders(df, query, top_k=5, target_products=None):
     
     # Price constraint detection
     price_match = re.search(r'under (\d+(\.\d+)?)\s*USD', query_lower)
+    if not price_match:
+        price_match = re.search(r'under.?(\d+)', query_lower)  # More flexible pattern
     price_constraint = float(price_match.group(1)) if price_match else None
     
     # Display extracted information

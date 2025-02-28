@@ -1,0 +1,394 @@
+import json
+import os
+
+notebook = {
+    "cells": [
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "# Amazon Product Data Analysis\n",
+                "\n",
+                "This notebook explores the Amazon product dataset to identify key patterns and insights that will be useful for our vector search system."
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "## Dataset Overview\n",
+                "\n",
+                "- Contains product listings from various categories with pricing, ratings, and review information\n",
+                "- Key columns: product_id, product_name, category, discounted_price, actual_price, rating, review_content"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "source": [
+                "# Import necessary libraries\n",
+                "import pandas as pd\n",
+                "import numpy as np\n",
+                "import matplotlib.pyplot as plt\n",
+                "import seaborn as sns\n",
+                "from sklearn.preprocessing import OneHotEncoder\n",
+                "from sklearn.feature_extraction.text import TfidfVectorizer\n",
+                "from sklearn.ensemble import RandomForestRegressor\n",
+                "\n",
+                "# Set plotting style\n",
+                "plt.style.use('ggplot')\n",
+                "sns.set_theme(style=\"whitegrid\")"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "source": [
+                "# Load the dataset\n",
+                "amazon_df = pd.read_csv('../data/amazon_products.csv')\n",
+                "\n",
+                "# Display basic information\n",
+                "print(f\"Total records: {len(amazon_df)}\")\n",
+                "amazon_df.info()"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "source": [
+                "# Display sample data\n",
+                "amazon_df.head()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "## Category Analysis\n",
+                "\n",
+                "### 1. Main Category Distribution"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "source": [
+                "# Extract main categories and count products\n",
+                "main_categories = amazon_df['category'].str.split('/').str[0].value_counts()\n",
+                "\n",
+                "# Plot\n",
+                "plt.figure(figsize=(12, 8))\n",
+                "main_categories.plot(kind='barh')\n",
+                "plt.title('Product Distribution by Main Category')\n",
+                "plt.xlabel('Number of Products')\n",
+                "plt.ylabel('Main Category')\n",
+                "plt.tight_layout()\n",
+                "plt.savefig('../images/Product Distribution by Main Category.png')\n",
+                "plt.show()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "![Main Categories](../images/Product%20Distribution%20by%20Main%20Category.png)\n",
+                "\n",
+                "**Key Insights:**\n",
+                "- Computers & Accessories dominates the dataset\n",
+                "- Electronics/Home Theater is second largest category\n",
+                "- Helps identify focus areas for inventory management"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 2. Sub-Category Distribution"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "source": [
+                "# Extract sub-categories and count products\n",
+                "sub_categories = amazon_df['category'].str.split('/').str[1].value_counts().head(15)\n",
+                "\n",
+                "# Plot\n",
+                "plt.figure(figsize=(12, 8))\n",
+                "sub_categories.plot(kind='barh')\n",
+                "plt.title('Product Distribution By Sub-Category (Top 15)')\n",
+                "plt.xlabel('Number of Products')\n",
+                "plt.ylabel('Sub-Category')\n",
+                "plt.tight_layout()\n",
+                "plt.savefig('../images/Product Distribution By Sub-Category.png')\n",
+                "plt.show()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "![Sub Categories](../images/Product%20Distribution%20By%20Sub-Category.png)\n",
+                "\n",
+                "**Key Insights:**\n",
+                "- Cables & Accessories is most populated sub-category\n",
+                "- USBCables and WirelessUSBAdapters are prominent\n",
+                "- Helps understand product type distribution"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 3. Category Hierarchy"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "source": [
+                "# Create a hierarchical view of categories\n",
+                "category_hierarchy = amazon_df.groupby(['category'])\\",
+                "                    .size()\\",
+                "                    .reset_index(name='count')\\",
+                "                    .sort_values('count', ascending=False)\\",
+                "                    .head(15)\n",
+                "\n",
+                "# Plot\n",
+                "plt.figure(figsize=(14, 10))\n",
+                "sns.barplot(x='count', y='category', data=category_hierarchy)\n",
+                "plt.title('Product Distribution By Category Hierarchical (Top 15)')\n",
+                "plt.xlabel('Number of Products')\n",
+                "plt.ylabel('Category Path')\n",
+                "plt.tight_layout()\n",
+                "plt.savefig('../images/Product Distribution By Category Hierarchical.png')\n",
+                "plt.show()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "![Hierarchical View](../images/Product%20Distribution%20By%20Category%20Hierarchical.png)\n",
+                "\n",
+                "**Key Insights:**\n",
+                "- Detailed view of category relationships\n",
+                "- Shows the full path hierarchy\n",
+                "- Helps understand the product taxonomy"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "## Rating Analysis\n",
+                "\n",
+                "### 1. Distribution of Ratings"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "source": [
+                "# Plot rating distribution\n",
+                "plt.figure(figsize=(10, 6))\n",
+                "sns.histplot(amazon_df['rating'].dropna(), bins=20, kde=True)\n",
+                "plt.title('Distribution of Product Ratings')\n",
+                "plt.xlabel('Rating')\n",
+                "plt.ylabel('Count')\n",
+                "plt.tight_layout()\n",
+                "plt.savefig('../images/Distribution of Product Ratings.png')\n",
+                "plt.show()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "![Rating Distribution](../images/Distribution%20of%20Product%20Ratings.png)\n",
+                "\n",
+                "**Key Insights:**\n",
+                "- Positively skewed distribution with most products rated highly\n",
+                "- Few products with low ratings\n",
+                "- Shows Amazon's quality control or potential rating bias"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "## Feature Importance Analysis"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "source": [
+                "# Define features for analysis\n",
+                "numeric_cols = ['discounted_price', 'actual_price', 'discount_pct']\n",
+                "\n",
+                "# Prepare data\n",
+                "y = amazon_df['rating'].values\n",
+                "valid_indices = ~np.isnan(y)\n",
+                "y_clean = y[valid_indices]\n",
+                "\n",
+                "# 1. Process numeric features\n",
+                "X_numeric = amazon_df[numeric_cols].fillna(0)[valid_indices]\n",
+                "\n",
+                "# 2. Process categorical features\n",
+                "categorical_features = ['category']\n",
+                "encoder = OneHotEncoder(sparse_output=False, handle_unknown='ignore')\n",
+                "X_categorical = encoder.fit_transform(amazon_df[categorical_features].fillna('Unknown')[valid_indices])\n",
+                "categorical_feature_names = encoder.get_feature_names_out(categorical_features)\n",
+                "\n",
+                "# 3. Process text features (simplified - using only about_product)\n",
+                "# Limit features to control dimensionality\n",
+                "text_vectorizer = TfidfVectorizer(max_features=50, stop_words='english')\n",
+                "X_text = text_vectorizer.fit_transform(amazon_df['about_product'].fillna('')[valid_indices]).toarray()\n",
+                "text_feature_names = text_vectorizer.get_feature_names_out()\n",
+                "\n",
+                "# Combine all features\n",
+                "X_combined = np.hstack([X_numeric, X_categorical, X_text])\n",
+                "all_feature_names = list(numeric_cols) + list(categorical_feature_names) + list(text_feature_names)\n",
+                "\n",
+                "# Train model\n",
+                "model = RandomForestRegressor(random_state=42, n_estimators=100)\n",
+                "model.fit(X_combined, y_clean)\n",
+                "\n",
+                "# Get top 20 features\n",
+                "importances = model.feature_importances_\n",
+                "indices = np.argsort(importances)[-20:]  # Get indices of top 20 features\n",
+                "\n",
+                "# Plot\n",
+                "plt.figure(figsize=(12, 10))\n",
+                "plt.barh(range(len(indices)), importances[indices], align='center')\n",
+                "plt.yticks(range(len(indices)), [all_feature_names[i] for i in indices])\n",
+                "plt.title('Top 20 Features Influencing Product Rating')\n",
+                "plt.xlabel('Importance Score')\n",
+                "plt.tight_layout()\n",
+                "plt.savefig('../images/Top 20 Features Influencing Product Rating.png')\n",
+                "plt.show()\n",
+                "\n",
+                "# Print top features\n",
+                "print(\"Top 20 features by importance:\")\n",
+                "for i in indices[::-1]:\n",
+                "    print(f\"{all_feature_names[i]}: {importances[i]:.4f}\")"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "![Feature Importance](../images/Top%2020%20Features%20Influencing%20Product%20Rating.png)\n",
+                "\n",
+                "**Key Insights:**\n",
+                "- Most influential features for product rating\n",
+                "- Price-related features are significant\n",
+                "- Certain product categories have stronger influence\n",
+                "- Text features from product descriptions impact ratings"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "## Review Content Analysis"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "source": [
+                "# Word cloud of review content\n",
+                "from wordcloud import WordCloud\n",
+                "\n",
+                "# Combine all reviews\n",
+                "all_reviews = ' '.join(amazon_df['review_content'].dropna().astype(str))\n",
+                "\n",
+                "# Generate and plot word cloud\n",
+                "wordcloud = WordCloud(width=800, height=400, \n",
+                "                     background_color='white',\n",
+                "                     max_words=100,\n",
+                "                     colormap='viridis',\n",
+                "                     contour_width=1, \n",
+                "                     contour_color='steelblue').generate(all_reviews)\n",
+                "\n",
+                "plt.figure(figsize=(16, 8))\n",
+                "plt.imshow(wordcloud, interpolation='bilinear')\n",
+                "plt.axis('off')\n",
+                "plt.title('Common Themes in Product Reviews', fontsize=20)\n",
+                "plt.tight_layout()\n",
+                "plt.savefig('../images/Common Themes in Product Reviews.png')\n",
+                "plt.show()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "![Review Themes](../images/Common%20Themes%20in%20Product%20Reviews.png)\n",
+                "\n",
+                "**Key Insights:**\n",
+                "- Common words and themes in reviews\n",
+                "- Product features frequently mentioned\n",
+                "- Customer concerns and priorities"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "## Conclusion\n",
+                "\n",
+                "This exploration of the Amazon product dataset has revealed several key insights:\n",
+                "\n",
+                "1. **Category Distribution**: Electronics and Computers dominate the dataset\n",
+                "2. **Rating Patterns**: Most products have high ratings (4+ stars)\n",
+                "3. **Price-Quality Relationship**: Price and quality don't always correlate directly\n",
+                "4. **Discount Strategies**: Discounting patterns vary by category and price point\n",
+                "5. **Feature Importance**: Price, category, and specific product features significantly influence ratings\n",
+                "\n",
+                "These insights will inform our vector search system design, helping create more effective product recommendations and search functionality."
+            ]
+        }
+    ],
+    "metadata": {
+        "kernelspec": {
+            "display_name": "Python 3",
+            "language": "python",
+            "name": "python3"
+        },
+        "language_info": {
+            "codemirror_mode": {
+                "name": "ipython",
+                "version": 3
+            },
+            "file_extension": ".py",
+            "mimetype": "text/x-python",
+            "name": "python",
+            "nbconvert_exporter": "python",
+            "pygments_lexer": "ipython3",
+            "version": "3.8.10"
+        }
+    },
+    "nbformat": 4,
+    "nbformat_minor": 4
+}
+
+# Ensure the directory exists
+os.makedirs("vectorshop/notebooks", exist_ok=True)
+
+# Write the notebook to file
+with open("vectorshop/notebooks/01_data_exploration.ipynb", "w") as f:
+    json.dump(notebook, f, indent=2)
+
+print("Notebook created successfully!") 

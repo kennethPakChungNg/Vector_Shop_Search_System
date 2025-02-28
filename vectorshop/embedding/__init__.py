@@ -32,3 +32,4 @@ from .hybrid_search import (
 
 from .embedding_tracker import EmbeddingTracker
 
+from .generate_embeddings import generate_essential_files
