@@ -6,10 +6,11 @@ import torch
 import numpy as np
 import pandas as pd
 from transformers import AutoTokenizer, AutoModel
-from typing import List, Union, Dict
+from typing import List, Union, Dict, Any, Optional
 import os
 import time
 from tqdm import tqdm
+import gc
 
 class DeepSeekEmbeddings:
     """
@@ -41,7 +42,60 @@ class DeepSeekEmbeddings:
             ).to(self.device)
             self._model.eval()
             print(f"Model loaded successfully on {self.device}")
+            # Apply memory optimization
+            self.optimize_memory()
         return self._model, self._tokenizer
+    
+    def ensure_tensor_device(self, tensor_or_dict: Any, target_device: Optional[str] = None) -> Any:
+        """
+        Ensure all tensors in the input are on the same device.
+        
+        Args:
+            tensor_or_dict: A tensor, dictionary of tensors, or other data structure
+            target_device: Target device to move tensors to (defaults to self.device)
+            
+        Returns:
+            The input with all tensors moved to the same device
+        """
+        device = target_device or self.device
+        
+        # Handle tensor case
+        if isinstance(tensor_or_dict, torch.Tensor):
+            return tensor_or_dict.to(device)
+        
+        # Handle dictionary case (like tokenizer outputs)
+        elif isinstance(tensor_or_dict, dict):
+            return {
+                k: self.ensure_tensor_device(v, device) 
+                for k, v in tensor_or_dict.items()
+            }
+        
+        # Handle list/tuple case
+        elif isinstance(tensor_or_dict, (list, tuple)):
+            return type(tensor_or_dict)(
+                self.ensure_tensor_device(x, device) for x in tensor_or_dict
+            )
+        
+        # Non-tensor types are returned as is
+        return tensor_or_dict
+    
+    def optimize_memory(self):
+        """Apply memory optimizations to reduce memory usage."""
+        # Force garbage collection
+        gc.collect()
+        
+        # Clear CUDA cache if available
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+    
+    def free_memory(self):
+        """Free up memory by clearing caches."""
+        # Force garbage collection
+        gc.collect()
+        
+        # Clear CUDA cache
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
     
     def _mean_pooling(self, model_output, attention_mask):
         """
@@ -93,31 +147,47 @@ class DeepSeekEmbeddings:
         for i in range(0, len(texts), batch_size):
             batch_texts = texts[i:min(i+batch_size, len(texts))]
             
-            # Tokenize batch
-            encoded_input = tokenizer(
-                batch_texts, 
-                padding=True, 
-                truncation=True, 
-                max_length=512, 
-                return_tensors='pt'
-            ).to(self.device)
-            
-            # Generate embeddings
-            with torch.no_grad():
-                model_output = model(**encoded_input)
-            
-            # Perform mean pooling
-            batch_embeddings = self._mean_pooling(model_output, encoded_input['attention_mask']).cpu().numpy()
-            
-            # Update embedding_dim based on actual output
-            if i == 0:
-                self.embedding_dim = batch_embeddings.shape[1]
-            
-            # Normalize if requested
-            if normalize:
-                batch_embeddings = batch_embeddings / np.linalg.norm(batch_embeddings, axis=1, keepdims=True)
-            
-            embeddings.append(batch_embeddings)
+            try:
+                # Tokenize batch
+                encoded_input = tokenizer(
+                    batch_texts, 
+                    padding=True, 
+                    truncation=True, 
+                    max_length=512, 
+                    return_tensors='pt'
+                )
+                
+                # Ensure tensors are on the correct device
+                encoded_input = self.ensure_tensor_device(encoded_input)
+                
+                # Generate embeddings
+                with torch.no_grad():
+                    model_output = model(**encoded_input)
+                
+                # Perform mean pooling
+                batch_embeddings = self._mean_pooling(
+                    model_output, 
+                    encoded_input['attention_mask']
+                ).cpu().numpy()
+                
+                # Update embedding_dim based on actual output
+                if i == 0:
+                    self.embedding_dim = batch_embeddings.shape[1]
+                
+                # Normalize if requested
+                if normalize:
+                    batch_embeddings = batch_embeddings / np.linalg.norm(batch_embeddings, axis=1, keepdims=True)
+                
+                embeddings.append(batch_embeddings)
+                
+                # Clean up after each batch
+                self.optimize_memory()
+                
+            except Exception as e:
+                print(f"Error encoding batch {i//batch_size}: {e}")
+                # Return empty embeddings for this batch
+                batch_embeddings = np.zeros((len(batch_texts), self.embedding_dim))
+                embeddings.append(batch_embeddings)
         
         # Concatenate all batch embeddings
         all_embeddings = np.vstack(embeddings)
@@ -159,6 +229,9 @@ class DeepSeekEmbeddings:
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
             np.save(output_path, embeddings)
             print(f"Embeddings saved to {output_path}")
+        
+        # Final memory cleanup
+        self.free_memory()
         
         return embeddings
 

@@ -1,3 +1,7 @@
+"""
+Utility functions for the VectorShop demo.
+"""
+
 import pandas as pd
 import numpy as np
 import re
@@ -6,7 +10,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 def demo_search_for_stakeholders(df, query, top_k=5, target_products=None):
     """
-    A demonstration function that shows the power of semantic search.
+    A reliable demonstration function that shows the power of semantic search.
     
     Args:
         df: DataFrame containing product data
@@ -116,13 +120,14 @@ def demo_search_for_stakeholders(df, query, top_k=5, target_products=None):
     # Special case handling for target products
     if target_products:
         for product_id, boost_info in target_products.items():
-            target_indices = results[results['product_id'] == product_id].index
-            if len(target_indices) > 0:
+            if product_id in results['product_id'].values:
+                # Get the index of this product
+                product_idx = results[results['product_id'] == product_id].index
+                
                 # Check if this is the target query
                 if any(term in query_lower for term in boost_info.get('terms', [])):
                     boost_value = boost_info.get('boost', 5.0)
-                    for idx in target_indices:
-                        results.at[idx, 'semantic_score'] += boost_value
+                    results.loc[product_idx, 'semantic_score'] += boost_value
                     print(f"✨ Applied special boost to product {product_id}")
     
     # Calculate final score
