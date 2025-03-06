@@ -16,7 +16,7 @@ def demo_search_for_stakeholders(df, query, top_k=5, target_products=None):
         df: DataFrame containing product data
         query: Search query from the user
         top_k: Number of results to return
-        target_products: Dictionary mapping product IDs to boosting information
+        target_products: Dictionary mapping queries to product IDs that should be boosted
         
     Returns:
         DataFrame with search results
@@ -80,7 +80,7 @@ def demo_search_for_stakeholders(df, query, top_k=5, target_products=None):
         df['combined_text'] = df['product_name'] + " " + df['category'] + " " + df.get('about_product', '')
     
     # Create TF-IDF vectorizer and matrix
-    tfidf = TfidfVectorizer(max_features=5000)
+    tfidf = TfidfVectorizer(max_features=5000, stop_words='english')
     tfidf_matrix = tfidf.fit_transform(df['combined_text'])
     
     # Create query vector and get similarity scores
@@ -135,22 +135,17 @@ def demo_search_for_stakeholders(df, query, top_k=5, target_products=None):
     # Calculate final score
     results['final_score'] = results['keyword_score'] + results['semantic_score']
     
+    # *** FIX: Remove duplicate product IDs before returning top results ***
+    results = results.drop_duplicates(subset='product_id', keep='first')
+    
     # Sort and get top results
     results = results.sort_values('final_score', ascending=False).head(top_k)
-    
-    # Remove any duplicate products (same product_id)
-    results = results.drop_duplicates(subset=['product_id'])
-    
-    # If we removed duplicates, add more results to reach top_k
-    if len(results) < top_k:
-        additional_results = df[~df['product_id'].isin(results['product_id'])].sort_values('final_score', ascending=False).head(top_k - len(results))
-        results = pd.concat([results, additional_results])
     
     # Calculate search time
     elapsed_time = time.time() - start_time
     
     # Show results with visual formatting
-    print(f"\n📊 TOP {len(results)} RESULTS (found in {elapsed_time:.2f} seconds):")
+    print(f"\n📊 TOP {top_k} RESULTS (found in {elapsed_time:.2f} seconds):")
     
     for i, (_, row) in enumerate(results.iterrows()):
         print(f"\n{i+1}. {row['product_name']}")

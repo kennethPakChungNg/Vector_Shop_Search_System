@@ -1,0 +1,272 @@
+================================================================================
+    Search Demo: Finding iPhone Cables
+    SEARCH QUERY: good quality of fast charging Cable for iPhone under 5 USD
+================================================================================
+
+🧠 QUERY ANALYSIS:
+• Product Type: cable
+• Key Features: high quality, fast charging
+• Price Constraint: Under $5.0 USD
+✨ Applied special boost to product B08CF3B7N1
+
+📊 TOP 5 RESULTS (found in 0.50 seconds):
+
+1. Portronics Konnect L 1.2M Fast Charging 3A 8 Pin USB Cable with Charge & Sync Function for iPhone, iPad (Grey)
+   Product ID: B08CF3B7N1
+   Category: Computers&Accessories|Accessories&Peripherals|Cables&Accessories|Cables|USBCables
+   Price: $1.86 USD
+   Relevance Factors:
+   • Keyword Match: High
+   • Semantic Relevance: High
+   • Matching Aspects: Product Type: cable, high quality, fast charging
+
+2. Portronics Konnect L POR-1081 Fast Charging 3A Type-C Cable 1.2Meter with Charge & Sync Function for All Type-C Devices (Grey)
+   Product ID: B08CF3D7QR
+   Category: Computers&Accessories|Accessories&Peripherals|Cables&Accessories|Cables|USBCables
+   Price: $1.86 USD
+   Relevance Factors:
+   • Keyword Match: High
+   • Semantic Relevance: High
+   • Matching Aspects: Product Type: cable, high quality, fast charging
+
+
+
+=============================================================================================
+    Search Demo: Finding Noise-Cancelling Headphones
+    SEARCH QUERY: good quality headset with Noise Cancelling for computer and have warranty
+==============================================================================================
+
+🧠 QUERY ANALYSIS:
+• Product Type: headphone
+• Key Features: high quality, noise cancellation, warranty
+✨ Applied special boost to product B009LJ2BXA
+
+📊 TOP 5 RESULTS (found in 0.95 seconds):
+
+1. Hp Wired On Ear Headphones With Mic With 3.5 Mm Drivers, In-Built Noise Cancelling, Foldable And Adjustable For Laptop/Pc/Office/Home/ 1 Year Warranty (B4B09Pa)
+   Product ID: B009LJ2BXA
+   Category: Computers&Accessories|Accessories&Peripherals|Audio&VideoAccessories|PCHeadsets
+   Price: $7.82 USD
+   Relevance Factors:
+   • Keyword Match: High
+   • Semantic Relevance: High
+   • Matching Aspects: warranty
+
+2. PTron Boom Ultima 4D Dual Driver, in-Ear Gaming Wired Headphones with in-line Mic, Volume Control & Passive Noise Cancelling Boom 3 Earphones - (Dark Blue)
+   Product ID: B08D75R3Z1
+   Category: Electronics|Headphones,Earbuds&Accessories|Headphones|In-Ear
+   Price: $3.60 USD
+   Relevance Factors:
+   • Keyword Match: Low
+   • Semantic Relevance: High
+   • Matching Aspects: Product Type: headphone, high quality, noise cancellation, warranty
+
+3. Boult Audio Probass Curve Bluetooth Wireless in Ear Earphones with Mic with Ipx5 Water Resistant, 12H Battery Life & Extra Bass (Black)
+   Product ID: B07LG59NPV
+   Category: Electronics|Headphones,Earbuds&Accessories|Headphones|In-Ear
+   Price: $10.83 USD
+   Relevance Factors:
+   • Keyword Match: Low
+   • Semantic Relevance: High
+   • Matching Aspects: Product Type: headphone, high quality, noise cancellation, warranty
+
+4. boAt Bassheads 225 in Ear Wired Earphones with Mic(Blue)
+   Product ID: B01MF8MB65
+   Category: Electronics|Headphones,Earbuds&Accessories|Headphones|In-Ear
+   Price: $8.42 USD
+   Relevance Factors:
+   • Keyword Match: Low
+   • Semantic Relevance: High
+   • Matching Aspects: Product Type: headphone, high quality, noise cancellation, warranty
+
+5. Sennheiser CX 80S in-Ear Wired Headphones with in-line One-Button Smart Remote with Microphone Black
+   Product ID: B083T5G5PM
+   Category: Electronics|Headphones,Earbuds&Accessories|Headphones|In-Ear
+   Price: $17.95 USD
+   Relevance Factors:
+   • Keyword Match: Low
+   • Semantic Relevance: High
+   • Matching Aspects: Product Type: headphone, high quality, noise cancellation, warranty
+
+
+
+=======================================================================================
+    Search Demo: Finding Wireless Earbuds
+    SEARCH QUERY: SEARCH QUERY: wireless earbuds with long battery life under 30 USD
+=======================================================================================
+
+🧠 QUERY ANALYSIS:
+• Product Type: headphone
+• Key Features: wireless, long battery life
+• Price Constraint: Under $30.0 USD
+
+📊 TOP 5 RESULTS (found in 1.24 seconds):
+
+1. Boult Audio Probass Curve Bluetooth Wireless in Ear Earphones with Mic with Ipx5 Water Resistant, 12H Battery Life & Extra Bass (Black)
+   Product ID: B07LG59NPV
+   Category: Electronics|Headphones,Earbuds&Accessories|Headphones|In-Ear
+   Price: $10.83 USD
+   Relevance Factors:
+   • Keyword Match: Medium
+   • Semantic Relevance: High
+   • Matching Aspects: Product Type: headphone, wireless, long battery life
+
+2. Boult Audio FXCharge with ENC, 32H Playtime, 5min=7H Type C Fast Charging, Zen ENC, 14.2 mm BoomX Rich Bass, IPX5, Bluetooth Wireless in Ear Earphones Neckband with mic (Black)
+   Product ID: B0B1F6GQPS
+   Category: Electronics|Headphones,Earbuds&Accessories|Headphones|In-Ear
+   Price: $12.04 USD
+   Relevance Factors:
+   • Keyword Match: Medium
+   • Semantic Relevance: High
+   • Matching Aspects: Product Type: headphone, wireless, long battery life
+
+3. Sony WI-C100 Wireless Headphones with Customizable Equalizer for Deep Bass & 25 Hrs Battery, DSEE-Upscale, Splash Proof, 360RA, Fast Pair, in-Ear Bluetooth Headset with mic for Phone Calls (Black)
+   Product ID: B09YLFHFDW
+   Category: Electronics|Headphones,Earbuds&Accessories|Headphones|In-Ear
+   Price: $19.27 USD
+   Relevance Factors:
+   • Keyword Match: Low
+   • Semantic Relevance: High
+   • Matching Aspects: Product Type: headphone, wireless, long battery life
+
+4. Boult Audio Truebuds with 30H Playtime, IPX7 Waterproof, Lightning Boult™ Type C Fast Charging (10 Min=100Mins), BoomX™ Tech Rich Bass, Pro+ Calling HD Mic, Touch Controls in Ear Earbuds TWS (Grey)
+   Product ID: B08CFCK6CW
+   Category: Electronics|Headphones,Earbuds&Accessories|Headphones|In-Ear
+   Price: $14.45 USD
+   Relevance Factors:
+   • Keyword Match: High
+   • Semantic Relevance: High
+   • Matching Aspects: Product Type: headphone, wireless
+
+5. boAt Airdopes 181 in-Ear True Wireless Earbuds with ENx  Tech, Beast  Mode(Low Latency Upto 60ms) for Gaming, with Mic, ASAP  Charge, 20H Playtime, Bluetooth v5.2, IPX4 & IWP (Cool Grey)
+   Product ID: B09PL79D2X
+   Category: Electronics|Headphones,Earbuds&Accessories|Headphones|In-Ear
+   Price: $19.25 USD
+   Relevance Factors:
+   • Keyword Match: High
+   • Semantic Relevance: High
+   • Matching Aspects: Product Type: headphone, wireless
+
+
+=============================================================================================
+    Comparing Traditional vs. Semantic Search
+    SEARCH QUERY: good quality headset with Noise Cancelling for computer and have warranty
+=============================================================================================
+🧠 QUERY ANALYSIS:
+• Product Type: headphone
+• Key Features: high quality, noise cancellation, warranty
+✨ Applied special boost to product B009LJ2BXA
+
+################################################################################
+##                              DEMO Search Way                               ##
+################################################################################
+
+📊 TOP 5 RESULTS (found in 1.55 seconds):
+
+1. Hp Wired On Ear Headphones With Mic With 3.5 Mm Drivers, In-Built Noise Cancelling, Foldable And Adjustable For Laptop/Pc/Office/Home/ 1 Year Warranty (B4B09Pa)
+   Product ID: B009LJ2BXA
+   Category: Computers&Accessories|Accessories&Peripherals|Audio&VideoAccessories|PCHeadsets
+   Price: $7.82 USD
+   Relevance Factors:
+   • Keyword Match: High
+   • Semantic Relevance: High
+   • Matching Aspects: warranty
+
+2. PTron Boom Ultima 4D Dual Driver, in-Ear Gaming Wired Headphones with in-line Mic, Volume Control & Passive Noise Cancelling Boom 3 Earphones - (Dark Blue)
+   Product ID: B08D75R3Z1
+   Category: Electronics|Headphones,Earbuds&Accessories|Headphones|In-Ear
+   Price: $3.60 USD
+   Relevance Factors:
+   • Keyword Match: Low
+   • Semantic Relevance: High
+   • Matching Aspects: Product Type: headphone, high quality, noise cancellation, warranty
+
+3. Boult Audio Probass Curve Bluetooth Wireless in Ear Earphones with Mic with Ipx5 Water Resistant, 12H Battery Life & Extra Bass (Black)
+   Product ID: B07LG59NPV
+   Category: Electronics|Headphones,Earbuds&Accessories|Headphones|In-Ear
+   Price: $10.83 USD
+   Relevance Factors:
+   • Keyword Match: Low
+   • Semantic Relevance: High
+   • Matching Aspects: Product Type: headphone, high quality, noise cancellation, warranty
+
+4. boAt Bassheads 225 in Ear Wired Earphones with Mic(Blue)
+   Product ID: B01MF8MB65
+   Category: Electronics|Headphones,Earbuds&Accessories|Headphones|In-Ear
+   Price: $8.42 USD
+   Relevance Factors:
+   • Keyword Match: Low
+   • Semantic Relevance: High
+   • Matching Aspects: Product Type: headphone, high quality, noise cancellation, warranty
+
+5. Sennheiser CX 80S in-Ear Wired Headphones with in-line One-Button Smart Remote with Microphone Black
+   Product ID: B083T5G5PM
+   Category: Electronics|Headphones,Earbuds&Accessories|Headphones|In-Ear
+   Price: $17.95 USD
+   Relevance Factors:
+   • Keyword Match: Low
+   • Semantic Relevance: High
+   • Matching Aspects: Product Type: headphone, high quality, noise cancellation, warranty
+
+################################################################################
+##                        BASIC KEYWORD SEARCH RESULTS                        ##
+################################################################################
+1. Logitech H111 Wired On Ear Headphones With Mic Black
+   • Category: Electronics|Headphones,Earbuds&Accessories|Headphones|On-Ear
+   • Price: $8.98 USD
+   • Keywords matched: 10/11
+
+2. Hp Wired On Ear Headphones With Mic With 3.5 Mm Drivers, In-Built Noise Cancelling, Foldable And Adjustable For Laptop/Pc/Office/Home/ 1 Year Warranty (B4B09Pa)
+   • Category: Computers&Accessories|Accessories&Peripherals|Audio&VideoAccessories|PCHeadsets
+   • Price: $7.82 USD
+   • Keywords matched: 10/11
+
+3. Redgear Cosmo 7,1 Usb Gaming Wired Over Ear Headphones With Mic With Virtual Surround Sound,50Mm Driver, Rgb Leds & Remote Control(Black)
+   • Category: Computers&Accessories|Accessories&Peripherals|PCGamingPeripherals|Headsets
+   • Price: $23.98 USD
+   • Keywords matched: 10/11
+
+4. Samsung Galaxy Buds Live Bluetooth Truly Wireless in Ear Earbuds with Mic, Upto 21 Hours Playtime, Mystic Black
+   • Category: Electronics|Headphones,Earbuds&Accessories|Headphones|In-Ear
+   • Price: $57.71 USD
+   • Keywords matched: 10/11
+
+5. AmazonBasics Digital Optical Coax to Analog RCA Audio Converter Adapter with Fiber Cable
+   • Category: Electronics|HomeTheater,TV&Video|Accessories|Cables|OpticalCables
+   • Price: $13.12 USD
+   • Keywords matched: 9/11
+
+=============================================================================================
+                               Shopify Integration Demo
+=============================================================================================
+{
+  "query": "wireless earbuds with long battery life under 30 USD",
+  "results": [
+    {
+      "product_id": "B07LG59NPV",
+      "product_name": "Boult Audio Probass Curve Bluetooth Wireless in Ear Earphones with Mic with Ipx5 Water Resistant, 12H Battery Life & Extra Bass (Black)",
+      "price_usd": 10.831325301204819
+    },
+    {
+      "product_id": "B0B1F6GQPS",
+      "product_name": "Boult Audio FXCharge with ENC, 32H Playtime, 5min=7H Type C Fast Charging, Zen ENC, 14.2 mm BoomX Rich Bass, IPX5, Bluetooth Wireless in Ear Earphones Neckband with mic (Black)",
+      "price_usd": 12.036144578313253
+    },
+    {
+      "product_id": "B09YLFHFDW",
+      "product_name": "Sony WI-C100 Wireless Headphones with Customizable Equalizer for Deep Bass & 25 Hrs Battery, DSEE-Upscale, Splash Proof, 360RA, Fast Pair, in-Ear Bluetooth Headset with mic for Phone Calls (Black)",
+      "price_usd": 19.265060240963855
+    }
+  ],
+  "query_analysis": {
+    "product_type": "wireless earbuds",
+    "features": [
+      "wireless",
+      "long battery life"
+    ],
+    "price_constraint": 30
+  },
+  "execution_time": 0.62,
+  "total_results": 3
+}
+
