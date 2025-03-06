@@ -21,7 +21,9 @@ This document provides performance benchmarks and optimization guidelines for Ve
 | Natural Language | 90% | Top 5 |
 | Complex Constraints | 85% | Top 10 |
 
-**Key Test Case:** For the query "good quality of fast charging Cable for iPhone under 5 USD," VectorShop places the target product (Portronics Konnect L) at position #1, while traditional search places it at position #73.
+**Key Test Case:** 
+For the query "good quality of fast charging Cable for iPhone under 5 USD":
+VectorShop places the target product (Portronics Konnect L) at position #1, while traditional search places it at position #73.
 
 ## Memory Usage
 
