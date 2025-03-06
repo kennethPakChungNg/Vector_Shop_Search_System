@@ -141,5 +141,38 @@ The demo implementation is derived from the full system but optimized for speed 
 
 The demo version is not a replacement for the full system, but rather a companion that makes the same concepts accessible in situations where speed and reliability are crucial.
 
+## Future Roadmap: Optimizing the Full Implementation
+
+While the demo system provides fast results for presentations, our technical vision is to optimize the full system for production use by small-to-medium online stores. Here's our roadmap for future improvements:
+
+### 1. Performance Optimization (Target: ≤30 seconds per query)
+
+- **Model Quantization**: Implement 4-bit and 8-bit quantization for the DeepSeek models to reduce memory footprint and accelerate inference
+- **Batched Processing**: Optimize query processing to handle multiple embedding generations in parallel
+- **Caching Infrastructure**: Build a Redis-based caching layer for query results and intermediate computations
+- **Embedding Compression**: Apply PCA or other dimensionality reduction techniques to embeddings while maintaining quality
+
+### 2. Resource Efficiency (Target: ≤2GB RAM usage)
+
+- **Selective Loading**: Implement on-demand loading of model components based on query requirements
+- **Streaming Results**: Return initial results quickly while processing more complex reranking in the background
+- **Memory Monitoring**: Add automatic memory usage tracking and optimization
+
+### 3. Integration and Deployment
+
+- **Shopify App**: Develop a dedicated Shopify app for one-click installation
+- **Serverless Deployment**: Create AWS Lambda and Google Cloud Functions deployment options
+- **API Gateway**: Build a standardized API for integration with any e-commerce platform
+- **Docker Container**: Provide optimized Docker images for easy deployment
+
+### 4. Advanced Features
+
+- **Personalization**: Add user preference modeling for personalized search results
+- **A/B Testing Framework**: Implement tools to measure business impact of different search configurations
+- **Multi-Market Support**: Expand language support for global e-commerce sites
+- **Voice Search Integration**: Connect with voice assistants for hands-free shopping
+
+Our vision is to make sophisticated AI search accessible to small online stores without requiring enterprise-level resources, bridging the gap between simple keyword search and expensive proprietary solutions.
+
 
 
