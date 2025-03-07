@@ -134,6 +134,9 @@ TOP 5 RESULTS (found in 0.54 seconds):
 5. Wayona Nylon Braided USB Type C Fast Charger Cable ($3.92)
 ```
 
+## System Architecture
+![System Architecture](docs/VectorShop%20Hybrid%20Architecture%20Small.jpg)
+
 ## 📖 Documentation
 
 - [System Architecture](docs/architecture.md)
