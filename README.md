@@ -1,18 +1,42 @@
 # VectorShop: Semantic Product Search System
 
-VectorShop is a production-ready semantic search system for small-to-medium sized online stores, allowing customers to find products using natural language queries instead of just keywords.
+VectorShop is a production-ready semantic search system designed for small-to-medium sized online stores, enabling natural language product discovery without requiring extensive infrastructure or AI expertise. By leveraging advanced AI models and efficient search techniques, it allows customers to find products using natural language queries instead of just keywords.
 
 ## 🔍 Key Features
 
-- **Natural Language Understanding**: Search for products as you would ask a store associate
-- **Hybrid Search Technology**: Combines keyword search, vector similarity, and AI reasoning
-- **Cost-Effective**: Uses open-source models to deliver enterprise-grade search capabilities
-- **Easy Integration**: Works with Shopify and other e-commerce platforms
+- **Natural Language Understanding**: Analyzes queries to extract product types, features, and price constraints
+- **Hybrid Search Technology**: Combines BM25 keyword matching, vector embeddings, and AI reasoning
+- **Multi-Modal Processing**: Analyzes both product text and images to improve matching
+- **Reasoning-Enhanced Results**: Uses DeepSeek-R1-Distill-Qwen-1.5B for advanced query interpretation
+- **Resource-Efficient**: Designed to run on modest hardware with low operational costs
 - **Multilingual Support**: Handles both English and regional language content
 
 ## 🚀 Quick Demo
 
-Try VectorShop with my [interactive demo notebook](demo/VectorShop_Demo.ipynb)!
+Try VectorShop with our [interactive demo notebook](demo/VectorShop_Demo.ipynb)!
+
+## 📊 Demo Results
+
+| Query Type | Example | Response Time | Result Quality |
+|------------|---------|---------------|----------------|
+| Product Type | "iPhone charging cable" | 0.54s | ✅ Correct cable types |
+| Feature-Specific | "noise cancelling headphones" | 0.62s | ✅ All results have the feature |
+| Price-Constrained | "earbuds under $30" | 0.95s | ✅ All results within budget |
+| Complex | "fast charging cable for iPhone under $5" | 0.50s | ✅ Matches all constraints |
+
+### Comparison with Traditional Search
+
+When searching for "noise cancelling headphones with warranty for computer":
+
+**Traditional Search**:
+- Returns products matching only keywords (including irrelevant items)
+- Misses important feature relationships
+- Includes items outside intended category
+
+**VectorShop Search**:
+- Returns only proper headphones with noise cancellation
+- Prioritizes products with warranty information
+- Computer compatibility is considered in ranking
 
 ## 📋 Requirements
 
@@ -41,18 +65,13 @@ pip install -e .
 ## 📖 Documentation
 
 - [System Architecture](docs/architecture.md)
-
 - [Data Preparation](docs/data_preparation.md)
-
 - [Performance Metrics](docs/performance.md)
-
 - [Integration Guide](docs/integration_guide.md)
-
 
 ## 🧪 Example Usage
 
-```bash
-
+```python
 from vectorshop.embedding.hybrid_search import HybridSearch
 
 # Initialize search system
@@ -72,12 +91,31 @@ results = search.search(
 print(results[['product_name', 'price_usd', 'score']])
 ```
 
+## 📈 Implementation Details
+
+VectorShop was implemented and tested using:
+- 1,465 products from Amazon dataset
+- 1,308 product images processed and analyzed
+- Full text processing with hierarchical category handling
+- 1,536-dimensional embeddings for semantic representation
+- FAISS index for efficient vector similarity search
+
+The implementation process included:
+1. Data preprocessing and cleaning
+2. Image downloading and BLIP2 analysis
+3. Text representation enhancement
+4. Embedding generation with DeepSeek-R1
+5. FAISS index building
+6. Hybrid search system implementation
+7. Performance testing and optimization
+
 ## 📊 Business Impact
 
-- Increased Conversions: Customers find exactly what they're looking for
-- Reduced Bounce Rates: Fewer failed searches and abandoned sessions
-- Enhanced Customer Experience: Natural interaction with product catalog
-- Competitive Advantage: Enterprise-level search capabilities at SMB cost
+- **Increased Conversions**: Customers find exactly what they're looking for, improving conversion rates
+- **Reduced Bounce Rates**: Fewer failed searches and abandoned sessions
+- **Enhanced Customer Experience**: Natural interaction with product catalog
+- **Competitive Advantage**: Enterprise-level search capabilities at SMB cost
+- **Operational Efficiency**: Self-hosted solution without ongoing subscription costs
 
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -173,6 +211,3 @@ While the demo system provides fast results for presentations, our technical vis
 - **Voice Search Integration**: Connect with voice assistants for hands-free shopping
 
 Our vision is to make sophisticated AI search accessible to small online stores without requiring enterprise-level resources, bridging the gap between simple keyword search and expensive proprietary solutions.
-
-
-
