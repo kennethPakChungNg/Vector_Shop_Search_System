@@ -38,21 +38,98 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
+## 📊 System Performance
+
+VectorShop offers two implementation approaches with different performance characteristics:
+
+### Demo Implementation Results
+
+| Query Type | Example | Response Time | Result Quality |
+|------------|---------|---------------|----------------|
+| Product Type | "iPhone charging cable" | 0.50s | ✅ Correct cable types |
+| Feature-Specific | "noise cancelling headphones" | 0.95s | ✅ All results have the feature |
+| Price-Constrained | "wireless earbuds under 30 USD" | 1.24s | ✅ All results within budget |
+| Complex | "headset with noise cancelling for computer and warranty" | 1.55s | ✅ Matches all constraints |
+
+### Full Implementation Results
+
+The complete VectorShop system provides comprehensive results with deeper semantic understanding:
+
+| Processing Stage | Metric | Value |
+|-----------------|--------|-------|
+| Dataset Processing | Products Processed | 1,465 |
+| Image Analysis | Images Processed | 1,308 (89.3% coverage) |
+| Embedding Generation | Embedding Dimension | 1,536 |
+| Vector Index | FAISS Index Size | 1,465 vectors |
+| BM25 Search | Corpus Size | 1,465 documents |
+| Search Performance | Response Time | 0.5-0.6s per query* |
+
+*The full implementation maintains fast response times while providing advanced query understanding and result ranking.
+
+#### Example Full Implementation Output:
+
+For the query "good quality headset with Noise Cancelling for computer and have warranty":
+
+🧠 QUERY ANALYSIS:
+
+Product Type: headphone
+Key Features: high quality, noise cancellation, warranty
+
+📊 TOP RESULT:
+Hp Wired On Ear Headphones With Mic With 3.5 Mm Drivers, In-Built Noise Cancelling,
+Foldable And Adjustable For Laptop/Pc/Office/Home/ 1 Year Warranty
+Price: $7.82 USD
+Relevance Factors:
+
+Keyword Match: High
+Semantic Relevance: High
+Matching Aspects: warranty, noise cancellation
+
+### Comparison with Traditional Search
+
+When searching for "noise cancelling headphones with warranty for computer":
+
+**Traditional Search**:
+- Returns some irrelevant products matching only keywords (AmazonBasics Digital Optical Coax adapter)
+- Misses important feature relationships
+- Ranks purely by keyword match count
+
+**VectorShop Search**:
+- Returns only proper headphones with noise cancellation
+- Prioritizes products with warranty information
+- Computer compatibility is considered in ranking
+- Provides detailed relevance explanations
+
+## 🔍 Sample Search Results
+
+### Query: "good quality of fast charging Cable for iPhone under 5 USD"
+
+VectorShop intelligently:
+1. Identifies "cable" as the product type
+2. Recognizes "high quality" and "fast charging" as key features
+3. Applies price constraint of under $5 USD
+4. Returns appropriate iPhone charging cables within budget
+
+```
+TOP 5 RESULTS (found in 0.54 seconds):
+
+1. Portronics Konnect L 1.2M Fast Charging 3A 8 Pin USB Cable for iPhone ($1.86)
+2. Portronics Konnect L POR-1081 Fast Charging 3A Type-C Cable ($1.86)
+3. Portronics Konnect L POR-1403 Fast Charging 3A Type-C Cable ($2.53)
+4. SWAPKART Fast Charging Cable for iPhone ($2.52)
+5. Wayona Nylon Braided USB Type C Fast Charger Cable ($3.92)
+```
+
 ## 📖 Documentation
 
 - [System Architecture](docs/architecture.md)
-
 - [Data Preparation](docs/data_preparation.md)
-
 - [Performance Metrics](docs/performance.md)
-
 - [Integration Guide](docs/integration_guide.md)
-
 
 ## 🧪 Example Usage
 
-```bash
-
+```python
 from vectorshop.embedding.hybrid_search import HybridSearch
 
 # Initialize search system
@@ -72,12 +149,12 @@ results = search.search(
 print(results[['product_name', 'price_usd', 'score']])
 ```
 
-## 📊 Business Impact
+## 📈 Business Impact
 
-- Increased Conversions: Customers find exactly what they're looking for
-- Reduced Bounce Rates: Fewer failed searches and abandoned sessions
-- Enhanced Customer Experience: Natural interaction with product catalog
-- Competitive Advantage: Enterprise-level search capabilities at SMB cost
+- **Increased Conversions**: Customers find exactly what they're looking for
+- **Reduced Bounce Rates**: Fewer failed searches and abandoned sessions
+- **Enhanced Customer Experience**: Natural interaction with product catalog
+- **Competitive Advantage**: Enterprise-level search capabilities at SMB cost
 
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -173,6 +250,3 @@ While the demo system provides fast results for presentations, our technical vis
 - **Voice Search Integration**: Connect with voice assistants for hands-free shopping
 
 Our vision is to make sophisticated AI search accessible to small online stores without requiring enterprise-level resources, bridging the gap between simple keyword search and expensive proprietary solutions.
-
-
-
