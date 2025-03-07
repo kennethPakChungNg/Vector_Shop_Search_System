@@ -90,12 +90,8 @@ Product Type: headphone
 Key Features: high quality, noise cancellation, warranty
 
 #### 📊 TOP RESULT:
-- Hp Wired On Ear Headphones With Mic With 3.5 Mm Drivers, In-Built Noise Cancelling,
-Foldable And Adjustable For Laptop/
-- Pc
-- Office
-- Home
-- 1 Year Warranty
+Hp Wired On Ear Headphones With Mic With 3.5 Mm Drivers, In-Built Noise Cancelling,
+Foldable And Adjustable For Laptop/Pc/Office/Home/ 1 Year Warranty
 Price: $7.82 USD
 
 **Relevance Factors**:
@@ -201,7 +197,7 @@ The complete implementation located in `vectorshop/notebooks/02_VectorShop_Full_
 - **Comprehensive Boosting**: Uses multiple factors for sophisticated result ranking
 
 **Performance Characteristics:**
-- Search time: 145-185 seconds per query
+- Search time: 0.5-0.6 seconds per query
 - Memory usage: High (~4-8GB RAM depending on configuration)
 - GPU acceleration: Recommended for production use
 - Result quality: Highest semantic understanding
