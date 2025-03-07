@@ -224,7 +224,7 @@ The demo version is not a replacement for the full system, but rather a companio
 
 ## Future Roadmap: Optimizing the Full Implementation
 
-While the demo system provides fast results for presentations, our technical vision is to optimize the full system for production use by small-to-medium online stores. Here's our roadmap for future improvements:
+While the demo system provides fast results for presentations, the technical vision is to optimize the full system for production use by small-to-medium online stores. Here's the roadmap for future improvements:
 
 ### 1. Performance Optimization (Target: ≤30 seconds per query)
 
@@ -253,4 +253,4 @@ While the demo system provides fast results for presentations, our technical vis
 - **Multi-Market Support**: Expand language support for global e-commerce sites
 - **Voice Search Integration**: Connect with voice assistants for hands-free shopping
 
-Our vision is to make sophisticated AI search accessible to small online stores without requiring enterprise-level resources, bridging the gap between simple keyword search and expensive proprietary solutions.
+My vision is to make sophisticated AI search accessible to small online stores without requiring enterprise-level resources, bridging the gap between simple keyword search and expensive proprietary solutions.
