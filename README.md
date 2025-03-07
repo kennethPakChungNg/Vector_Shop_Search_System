@@ -10,6 +10,20 @@ VectorShop is a production-ready semantic search system for small-to-medium size
 - **Easy Integration**: Works with Shopify and other e-commerce platforms
 - **Multilingual Support**: Handles both English and regional language content
 
+## 📊 Dataset Overview
+
+VectorShop is trained and tested on a diverse e-commerce dataset with the following characteristics:
+
+### Product Categories
+![Top 10 Product Categories](images/Product%20Distribution%20by%20Main%20Category.png)
+
+The dataset covers a wide range of product categories, with Electronics, Computers & Accessories, and Home & Kitchen representing the majority of products.
+
+### Price Distribution
+![Price Distribution](images/Price%20Distribution%20(USD).png)
+
+Products span a wide price range with a mean price of $36.34 USD, allowing VectorShop to effectively handle price-constrained queries across budget segments.
+
 ## 🚀 Quick Demo
 
 Try VectorShop with my [interactive demo notebook](demo/VectorShop_Demo.ipynb)!
