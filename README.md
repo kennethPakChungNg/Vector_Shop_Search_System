@@ -66,24 +66,28 @@ The complete VectorShop system provides comprehensive results with deeper semant
 
 *The full implementation maintains fast response times while providing advanced query understanding and result ranking.
 
-#### Example Full Implementation Output:
+### Example Full Implementation Output:
 
 For the query "good quality headset with Noise Cancelling for computer and have warranty":
 
-🧠 QUERY ANALYSIS:
+#### 🧠 QUERY ANALYSIS:
 
 Product Type: headphone
 Key Features: high quality, noise cancellation, warranty
 
-📊 TOP RESULT:
-Hp Wired On Ear Headphones With Mic With 3.5 Mm Drivers, In-Built Noise Cancelling,
-Foldable And Adjustable For Laptop/Pc/Office/Home/ 1 Year Warranty
+#### 📊 TOP RESULT:
+- Hp Wired On Ear Headphones With Mic With 3.5 Mm Drivers, In-Built Noise Cancelling,
+Foldable And Adjustable For Laptop/
+- Pc
+- Office
+- Home
+- 1 Year Warranty
 Price: $7.82 USD
-Relevance Factors:
 
-Keyword Match: High
-Semantic Relevance: High
-Matching Aspects: warranty, noise cancellation
+**Relevance Factors**:
+1. Keyword Match: High
+2. Semantic Relevance: High
+3. Matching Aspects: warranty, noise cancellation
 
 ### Comparison with Traditional Search
 
